@@ -1,6 +1,5 @@
 import 'package:aural/constants/colors.dart';
 import 'package:aural/controllers/cart_controller.dart';
-import 'package:aural/models/product.dart';
 import 'package:aural/widgets/cart_benifit.dart';
 import 'package:aural/widgets/cart_product_card.dart';
 import 'package:aural/widgets/cart_summary.dart';
