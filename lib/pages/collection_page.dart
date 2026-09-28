@@ -77,9 +77,7 @@ class _CollectionPageState extends State<CollectionPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // =========================
-              // Page Title
-              // =========================
+            
               const Text(
                 'Explore Collection',
                 style: TextStyle(
@@ -99,9 +97,6 @@ class _CollectionPageState extends State<CollectionPage> {
 
               const SizedBox(height: 22),
 
-              // =========================
-              // Categories + Sort
-              // =========================
               Row(
                 children: [
                   Expanded(
@@ -177,9 +172,7 @@ class _CollectionPageState extends State<CollectionPage> {
 
               const SizedBox(height: 20),
 
-              // =========================
-              // Products Count
-              // =========================
+         
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -201,9 +194,6 @@ class _CollectionPageState extends State<CollectionPage> {
 
               const SizedBox(height: 12),
 
-              // =========================
-              // Products Grid
-              // =========================
               GridView.builder(
                 itemCount: filteredProducts.length,
                 shrinkWrap: true,

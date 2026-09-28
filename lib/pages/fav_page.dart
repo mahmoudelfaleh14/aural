@@ -15,9 +15,7 @@ class FavoritesPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: pcolor,
 
-      // =========================
-      // App Bar
-      // =========================
+    
       appBar: MainAppBar(
         showCart: true,
         showFav: false,
@@ -31,9 +29,7 @@ class FavoritesPage extends StatelessWidget {
             size: 19,
           ),
         ),
-      ), // =========================
-      // Body
-      // =========================
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 24),
 
@@ -41,9 +37,7 @@ class FavoritesPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            // =========================
-            // Title
-            // =========================
+           
             const Text(
               'Your Favorites',
               style: TextStyle(
@@ -56,9 +50,6 @@ class FavoritesPage extends StatelessWidget {
 
             const SizedBox(height: 5),
 
-            // =========================
-            // Subtitle + Count + Edit
-            // =========================
             Row(
               children: [
                 const Expanded(
@@ -77,7 +68,6 @@ class FavoritesPage extends StatelessWidget {
 
                 OutlinedButton(
                   onPressed: () {
-                    // هنضيف Edit بعدين
                   },
 
                   style: OutlinedButton.styleFrom(
@@ -101,9 +91,7 @@ class FavoritesPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // =========================
-            // Favorites
-            // =========================
+            
             if (favorites.isEmpty)
               const Center(
                 child: Padding(
@@ -151,7 +139,6 @@ class FavoritesPage extends StatelessWidget {
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
 
-                  // ظبطها حسب شكل FavoriteProductCard
                   childAspectRatio: 0.65,
                 ),
 

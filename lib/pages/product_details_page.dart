@@ -1,5 +1,7 @@
 import 'package:aural/constants/add_to_cart_btn.dart';
 import 'package:aural/controllers/fav_controller.dart';
+import 'package:aural/widgets/feature_item.dart';
+import 'package:aural/widgets/feature_tile.dart';
 import 'package:aural/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:aural/models/products.dart';
@@ -23,24 +25,17 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // =========================
-    // Get Current Product
-    // =========================
+  
     final product = products.firstWhere(
       (item) => item.productname == productname,
     );
 
-    // =========================
-    // Favorite State
-    // =========================
     final isFavorite = context.watch<FavoritesController>().isFavorite(product);
 
     return Scaffold(
       backgroundColor: const Color(0xFF0D0E0D),
 
-      // =========================
-      // Main App Bar
-      // =========================
+      
       appBar: MainAppBar(
         leading: IconButton(
           onPressed: () {
@@ -54,9 +49,7 @@ class ProductDetailsPage extends StatelessWidget {
         ),
       ),
 
-      // =========================
-      // Add To Cart Bottom Button
-      // =========================
+  
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
@@ -68,15 +61,10 @@ class ProductDetailsPage extends StatelessWidget {
         ),
       ),
 
-      // =========================
-      // Body
-      // =========================
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            // =========================
-            // Product Image
-            // =========================
+          
             SliverToBoxAdapter(
               child: AspectRatio(
                 aspectRatio: 1122 / 1420,
@@ -89,18 +77,14 @@ class ProductDetailsPage extends StatelessWidget {
               ),
             ),
 
-            // =========================
-            // Product Information
-            // =========================
+        
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 18, 16, 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // =========================
-                    // Product Name + Favorite
-                    // =========================
+                
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -117,9 +101,6 @@ class ProductDetailsPage extends StatelessWidget {
 
                         const SizedBox(width: 8),
 
-                        // =========================
-                        // Favorite Button
-                        // =========================
                         IconButton(
                           onPressed: () {
                             context.read<FavoritesController>().toggleFavorite(
@@ -137,9 +118,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 5),
 
-                    // =========================
-                    // Product Category
-                    // =========================
+                  
                     Text(
                       productdiscription,
                       style: const TextStyle(
@@ -150,9 +129,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 10),
 
-                    // =========================
-                    // Price + Rating
-                    // =========================
+              
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -195,9 +172,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // =========================
-                    // Product Description
-                    // =========================
+                   
                     Text(
                       longDescription,
                       style: const TextStyle(
@@ -209,9 +184,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 24),
 
-                    // =========================
-                    // Feature Highlights
-                    // =========================
+                 
                     Row(
                       children: [
                         Expanded(
@@ -250,9 +223,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 28),
 
-                    // =========================
-                    // Features Title
-                    // =========================
+                  
                     const Text(
                       'Features',
                       style: TextStyle(
@@ -264,9 +235,7 @@ class ProductDetailsPage extends StatelessWidget {
 
                     const SizedBox(height: 10),
 
-                    // =========================
-                    // Features
-                    // =========================
+                   
                     const FeatureTile(
                       icon: Icons.graphic_eq_outlined,
                       title: 'Sound',
@@ -297,98 +266,3 @@ class ProductDetailsPage extends StatelessWidget {
   }
 }
 
-// =====================================================
-// Feature Item
-// =====================================================
-
-class FeatureItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-
-  const FeatureItem({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white12, width: 1),
-          ),
-          child: Icon(icon, color: Colors.white70, size: 20),
-        ),
-
-        const SizedBox(height: 8),
-
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 9,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-
-        const SizedBox(height: 2),
-
-        Text(
-          subtitle,
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(color: Colors.white38, fontSize: 8),
-        ),
-      ],
-    );
-  }
-}
-
-// =====================================================
-// Feature Tile
-// =====================================================
-
-class FeatureTile extends StatelessWidget {
-  final IconData icon;
-  final String title;
-
-  const FeatureTile({super.key, required this.icon, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 6),
-      decoration: BoxDecoration(
-        color: const Color(0xFF121312),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.white10),
-      ),
-      child: ListTile(
-        dense: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-        leading: Icon(icon, color: Colors.white54, size: 18),
-        title: Text(
-          title,
-          style: const TextStyle(color: Colors.white70, fontSize: 12),
-        ),
-        trailing: const Icon(
-          Icons.arrow_forward_ios_rounded,
-          color: Colors.white38,
-          size: 13,
-        ),
-      ),
-    );
-  }
-}
